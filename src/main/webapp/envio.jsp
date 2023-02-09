@@ -43,7 +43,7 @@
             <c:when test="${not empty param.bd}">
                 <h1>Crear usuario</h1>
 
-                <form method="POST" action="crearUsuario" enctype="multipart/form-data">
+                <form method="POST" action="crearUsuario">
                     <fieldset>
                         <label>Usuario : <input type="text" name="usu"/></label><br/>
                         <label>Contraseña : <input type="password" name="pwd"/></label>

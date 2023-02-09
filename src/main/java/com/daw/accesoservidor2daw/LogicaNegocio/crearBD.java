@@ -5,12 +5,14 @@
 package com.daw.accesoservidor2daw.LogicaNegocio;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -42,25 +44,23 @@ public class crearBD extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
         String conector = "com.mysql.jdbc.Driver";
-    
+
         String url = "jdbc:mysql://localhost/";
-    
-        try 
-        {
+        PrintWriter out = response.getWriter();
+
+        try {
             String user = request.getParameter("usu");
-            String pwd = request.getParameter("pwd");    
+            String pwd = request.getParameter("pwd");
             String bbdd = request.getParameter("bbdd");
-            
-            
-        String usuario =user;
-                
-        String pass = pwd;
-        
+
+            String usuario = user;
+
+            String pass = pwd;
+
             Class.forName(conector).newInstance();
-            Connection conexion=DriverManager.getConnection(url,usuario, pass);
-            
+            Connection conexion = DriverManager.getConnection(url, usuario, pass);
+
             /*String sentencia;
             sentencia = "CREATE USER ?@'localhost' IDENTIFIED BY ?";
             PreparedStatement sent=conexion.prepareStatement(sentencia);
@@ -71,41 +71,62 @@ public class crearBD extends HttpServlet {
             PreparedStatement sent02=conexion.prepareStatement(sentencia02);
             sent02.setString(1, user);
             sent02.setString(1, pwd);
-            sent.execute();     */       
-            
-            String sentencia2 ="CREATE DATABASE IF NOT EXISTS "+user+"_"+bbdd+"";
-            Statement sent2=conexion.createStatement();
+            sent.execute();     */
+            String sentencia2 = "CREATE DATABASE IF NOT EXISTS " + user + "_" + bbdd + "";
+            Statement sent2 = conexion.createStatement();
             sent2.execute(sentencia2);
-            
-            String sentencia3 ="GRANT ALL PRIVILEGES ON "+user+".* TO '"+user+"'@'localhost' IDENTIFIED BY '"+pwd+"'";
-            Statement sent3=conexion.createStatement();
+
+            /*String sentencia3 = "GRANT ALL PRIVILEGES ON " + user + ".* TO '" + user + "'@'localhost' IDENTIFIED BY '" + pwd + "'";
+            Statement sent3 = conexion.createStatement();
             sent3.execute(sentencia3);
-            
-            String sentencia4 ="GRANT ALL PRIVILEGES ON `"+user+"_%`.* TO '"+user+"'@'localhost' IDENTIFIED BY '"+pwd+"'";
-            Statement sent4=conexion.createStatement();
-            sent4.execute(sentencia4);
-            
+
+            String sentencia4 = "GRANT ALL PRIVILEGES ON `" + user + "_%`.* TO '" + user + "'@'localhost' IDENTIFIED BY '" + pwd + "'";
+            Statement sent4 = conexion.createStatement();
+            sent4.execute(sentencia4);*/
+
             Part parteSql = request.getPart("sql");
             String ruta = getServletContext().getRealPath("datos");
-            parteSql.write(ruta+"\\"+parteSql.getSubmittedFileName());
-            File archivo = new File(ruta+"\\"+parteSql.getSubmittedFileName());
-        } 
-        catch (ClassNotFoundException ex) 
-        {
+            parteSql.write(ruta + "\\" + parteSql.getSubmittedFileName());
+            File archivo = new File(ruta + "\\" + parteSql.getSubmittedFileName());
+            creaTabla(conexion, archivo, out);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch (InstantiationException ex) 
-        {
-            Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    private boolean creaTabla(Connection conn, File file, PrintWriter out) {
+
+        Scanner sc;
+        String tabla = "";
+
+        try {
+            sc = new Scanner(file);
+            sc.useDelimiter(";");
+            tabla += sc.next() + ";";
+
+            Statement stm = conn.createStatement();
+            stm.execute(tabla);
+
+            sc.close();
+            stm.close();
+
+            out.println("[+] La tabla ha sido creada con éxito");
+
+        } catch (FileNotFoundException ex) {
+            out.println("\n[!] Error, fichero no encontrado...\n");
+            return false;
+        } catch (SQLException ex) {
+            out.println("\n[!] Error creando la tabla...\n");
+            return false;
         }
-        catch (IllegalAccessException ex) 
-        {
-            Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        return true;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
