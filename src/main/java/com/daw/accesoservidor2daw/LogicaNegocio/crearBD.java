@@ -46,7 +46,6 @@ public class crearBD extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String conector = "com.mysql.jdbc.Driver";
 
-        
         PrintWriter out = response.getWriter();
 
         try {
@@ -76,20 +75,18 @@ public class crearBD extends HttpServlet {
             Statement sent2 = conexion.createStatement();
             sent2.execute(sentencia2);
 
-            String sentencia3 = "GRANT ALL PRIVILEGES ON " + user + ".* TO '" + user + "'@'localhost' IDENTIFIED BY '" + pwd + "'";
+            /*String sentencia3 = "GRANT ALL PRIVILEGES ON '" + user + "'.* TO '" + user + "'@'localhost' IDENTIFIED BY '" + pwd + "'";
             Statement sent3 = conexion.createStatement();
-            sent3.execute(sentencia3);
-
+            sent3.execute(sentencia3);*/
             String sentencia4 = "GRANT ALL PRIVILEGES ON `" + user + "_%`.* TO '" + user + "'@'localhost' IDENTIFIED BY '" + pwd + "'";
             Statement sent4 = conexion.createStatement();
             sent4.execute(sentencia4);
 
-            
             url = "jdbc:mysql://localhost/" + bbdd;
             //Class.forName(conector).newInstance();
-            conexion.setCatalog(bbdd);
+            conexion.setCatalog(user + "_" + bbdd);
             //conexion = DriverManager.getConnection(url, usuario, pass);
-            
+
             Part parteSql = request.getPart("sql");
             String ruta = getServletContext().getRealPath("datos");
             parteSql.write(ruta + "\\" + parteSql.getSubmittedFileName());
@@ -113,8 +110,7 @@ public class crearBD extends HttpServlet {
 
         try {
             sc = new Scanner(file);
-            
-            
+
             sc.useDelimiter(";");
             Statement stm = conn.createStatement();
             tabla = sc.next() + ";";
@@ -122,11 +118,12 @@ public class crearBD extends HttpServlet {
             stm.execute(tabla);
             while (sc.hasNext()) {
                 tabla = sc.next() + ";";
-                tabla = tabla.replace("\n", "");
-                stm.execute(tabla);
+                    tabla = tabla.replace("\n", "");
+                    tabla = tabla.replace("\r", "");
+                if (!tabla.equals(";")) {
+                    stm.execute(tabla);
+                }
             }
-
-           
 
             sc.close();
             stm.close();
