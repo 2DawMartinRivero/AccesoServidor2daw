@@ -1,0 +1,10 @@
+com\daw\accesoservidor2daw\DTO\Usuario_.class
+com\daw\accesoservidor2daw\DTO\Usuario.class
+com\daw\accesoservidor2daw\DAO\exceptions\IllegalOrphanException.class
+com\daw\accesoservidor2daw\LogicaNegocio\ComprobarUsu.class
+com\daw\accesoservidor2daw\DAO\exceptions\NonexistentEntityException.class
+com\daw\accesoservidor2daw\DAO\exceptions\PreexistingEntityException.class
+com\daw\accesoservidor2daw\LogicaNegocio\crearUsuario.class
+com\daw\accesoservidor2daw\LogicaNegocio\crearBD.class
+com\daw\accesoservidor2daw\LogicaNegocio\SubidaArchivos.class
+com\daw\accesoservidor2daw\DAO\UsuarioJpaController.class
