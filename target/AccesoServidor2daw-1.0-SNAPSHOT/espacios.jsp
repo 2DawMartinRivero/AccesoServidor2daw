@@ -29,6 +29,12 @@
         </style>
     </head>
     <body class="p-3">
+        <nav class="m-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.jsp">Principal</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Servidores</li> 
+            </ol>
+        </nav>
         <form action="envio.jsp" method="POST" class="row row-cols-md-4 justify-content-center">
             <div class="card p-3 my-3">
                 <img src="img/logoApache.png" class="card-img-top" alt="...">

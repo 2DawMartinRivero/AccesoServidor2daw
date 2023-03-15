@@ -75,6 +75,7 @@ public class crearUsuario extends HttpServlet {
             String sentencia4 ="GRANT ALL PRIVILEGES ON `"+user+"_%`.* TO '"+user+"'@'localhost' IDENTIFIED BY '"+pwd+"'";
             Statement sent4=conexion.createStatement();
             sent4.execute(sentencia4);
+            request.setAttribute("msgUsuario", "Usuario " + user + " creado con exito");
         } 
         catch (ClassNotFoundException ex) 
         {

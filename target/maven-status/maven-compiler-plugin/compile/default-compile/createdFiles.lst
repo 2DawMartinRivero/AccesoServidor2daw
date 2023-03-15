@@ -7,5 +7,4 @@ com\daw\accesoservidor2daw\DAO\exceptions\PreexistingEntityException.class
 com\daw\accesoservidor2daw\LogicaNegocio\crearUsuario.class
 com\daw\accesoservidor2daw\LogicaNegocio\crearBD.class
 com\daw\accesoservidor2daw\LogicaNegocio\SubidaArchivos.class
-.netbeans_automatic_build
 com\daw\accesoservidor2daw\DAO\UsuarioJpaController.class

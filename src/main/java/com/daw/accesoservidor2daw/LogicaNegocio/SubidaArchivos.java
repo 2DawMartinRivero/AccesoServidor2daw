@@ -22,12 +22,9 @@ import javax.servlet.http.Part;
  *
  * @author lola
  */
-
-
 @WebServlet(name = "SubidaArchivos", urlPatterns = {"/SubidaArchivos"})
 @MultipartConfig()
 public class SubidaArchivos extends HttpServlet {
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -38,36 +35,42 @@ public class SubidaArchivos extends HttpServlet {
 
             case "apache":
                 ruta = "C:\\Apache24\\htdocs\\2daw\\";
+                String msg = "";
                 if (usu.getTipoUsuario()) {
 
                     switch (usu.getNombreUsuario()) {
 
                         case "juanma":
                             ruta += "Diseño\\Juanma";
+                            msg = "Diseño\\Juanma";
                             break;
                         case "pedro":
                             ruta += "Clientes\\Pedro";
+                            msg = "Clientes\\Pedro";
                             break;
                         case "lola":
                             ruta += request.getParameter("asigLola") + "\\Lola";
+                            msg = request.getParameter("asigLola") + "\\Lola";
                             break;
                     }
 
                 } else {
                     ruta += asignatura + "\\Alumnos";
+                    msg = asignatura + "\\Alumnos";
                 }
+                request.setAttribute("msgApache", msg);
                 break;
 
             case "tomcat":
                 ruta = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps";
-                
+                request.setAttribute("msgTomcat", request.getPart("archivo").getSubmittedFileName());
                 //Creación usuario y sql
-                
+
                 break;
         }
-        
+
         Part parte = request.getPart("archivo");
-        parte.write(ruta+"\\"+parte.getSubmittedFileName());
+        parte.write(ruta + "\\" + parte.getSubmittedFileName());
 
         /* TODO output your page here. You may use following sample code. */
     }
@@ -78,10 +81,10 @@ public class SubidaArchivos extends HttpServlet {
         processRequest(request, response);
     }
 
-/*
+    /*
     Comentario de Aitor
     
-    */
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
