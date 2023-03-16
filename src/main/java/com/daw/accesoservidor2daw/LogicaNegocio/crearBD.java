@@ -89,17 +89,27 @@ public class crearBD extends HttpServlet {
 
             Part parteSql = request.getPart("sql");
             String ruta = getServletContext().getRealPath("datos");
+            File fileSaveDir = new File(ruta);
+
+            if (!fileSaveDir.exists()) {
+                fileSaveDir.mkdirs();
+            }
             parteSql.write(ruta + "\\" + parteSql.getSubmittedFileName());
             File archivo = new File(ruta + "\\" + parteSql.getSubmittedFileName());
             creaTabla(conexion, archivo, out);
+            response.sendRedirect("envio.jsp?bd=bd&cBD=" + bbdd + "&uBD=" + user);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("envio.jsp?bd=bd&errorBD=true");
         } catch (InstantiationException ex) {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("envio.jsp?bd=bd&errorBD=true");
         } catch (IllegalAccessException ex) {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("envio.jsp?bd=bd&errorBD=true");
         } catch (SQLException ex) {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("envio.jsp?bd=bd&errorBD=true");
         }
     }
 
@@ -118,11 +128,12 @@ public class crearBD extends HttpServlet {
             stm.execute(tabla);
             while (sc.hasNext()) {
                 tabla = sc.next() + ";";
-                    tabla = tabla.replace("\n", "");
-                    tabla = tabla.replace("\r", "");
+                tabla = tabla.replace("\n", "");
+                tabla = tabla.replace("\r", "");
                 if (!tabla.equals(";")) {
                     stm.execute(tabla);
                 }
+
             }
 
             sc.close();

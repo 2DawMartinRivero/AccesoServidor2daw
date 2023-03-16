@@ -76,22 +76,27 @@ public class crearUsuario extends HttpServlet {
             Statement sent4=conexion.createStatement();
             sent4.execute(sentencia4);
             request.setAttribute("msgUsuario", "Usuario " + user + " creado con exito");
+            response.sendRedirect("envio.jsp?bd=bd&msgUsuario=" + user);
         } 
         catch (ClassNotFoundException ex) 
         {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("envio.jsp?bd=bd&errorUbd=true");
         }
         catch (InstantiationException ex) 
         {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("envio.jsp?bd=bd&errorUbd=true");
         }
         catch (IllegalAccessException ex) 
         {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("envio.jsp?bd=bd&errorUbd=true");
         }
         catch (SQLException ex) 
         {
             Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("envio.jsp?bd=bd&errorUbd=true");
         }
     }
 

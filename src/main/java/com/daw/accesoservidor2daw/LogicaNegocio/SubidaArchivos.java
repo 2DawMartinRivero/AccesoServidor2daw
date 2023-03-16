@@ -31,39 +31,40 @@ public class SubidaArchivos extends HttpServlet {
         Usuario usu = (Usuario) request.getSession().getAttribute("usuario");
         String ruta = null;
         String asignatura = request.getParameter("asignatura");
+        String msg = "";
         switch (request.getParameter("ruta")) {
 
             case "apache":
                 ruta = "C:\\Apache24\\htdocs\\2daw\\";
-                String msg = "";
+                
                 if (usu.getTipoUsuario()) {
 
                     switch (usu.getNombreUsuario()) {
 
                         case "juanma":
                             ruta += "Diseño\\Juanma";
-                            msg = "Diseño\\Juanma";
+                            msg = "apache=apache&asig=Diseño&espacio=Juanma";
                             break;
                         case "pedro":
                             ruta += "Clientes\\Pedro";
-                            msg = "Clientes\\Pedro";
+                            msg = "apache=apache&asig=Clientes&espacio=Pedro";
                             break;
                         case "lola":
                             ruta += request.getParameter("asigLola") + "\\Lola";
-                            msg = request.getParameter("asigLola") + "\\Lola";
+                            msg = "apache=apache&asig=" + request.getParameter("asigLola") + "&espacio=Lola";
                             break;
                     }
 
                 } else {
                     ruta += asignatura + "\\Alumnos";
-                    msg = asignatura + "\\Alumnos";
+                    msg = "apache=apache&asig=" + asignatura + "&espacio=Alumnos";
                 }
-                request.setAttribute("msgApache", msg);
                 break;
 
             case "tomcat":
                 ruta = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps";
-                request.setAttribute("msgTomcat", request.getPart("archivo").getSubmittedFileName());
+                String archN = request.getPart("archivo").getSubmittedFileName();
+                msg = "tomcat=Apache Tomcat&msgTomcat=" + archN.substring(0, archN.length()-4);
                 //Creación usuario y sql
 
                 break;
@@ -71,6 +72,8 @@ public class SubidaArchivos extends HttpServlet {
 
         Part parte = request.getPart("archivo");
         parte.write(ruta + "\\" + parte.getSubmittedFileName());
+        
+        response.sendRedirect("envio.jsp?" + msg);
 
         /* TODO output your page here. You may use following sample code. */
     }

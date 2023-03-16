@@ -8,6 +8,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Favicons -->
+        <link rel="icon" href="img/iessinfondo.png">
         <title>Subir archivos</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <style>
@@ -60,7 +62,7 @@
                     </form>
                     <img class="m-auto" src="img/war.png" id="war" alt="Icono de tipo de archivo">
                     <c:if test="${not empty param.msgTomcat}">
-                        <a class="w-100 btn btn-lg colorBtn" href="http://aplicaciones-martinrivero.ddns.net:8081/${param.msgTomcat}">Ver mi Aplicacion Desplegada</a>
+                        <a class="btn btn-lg colorBtn" href="http://aplicaciones-martinrivero.ddns.net:8081/${param.msgTomcat}">Ver mi Aplicacion Desplegada</a>
                     </c:if>
                 </div>
             </c:when>
@@ -79,16 +81,16 @@
                             <select name="asignatura" class="form-select" aria-label="Seleccion de Asigantura">
                                 <option value="-1">Selecciona una Opcion</option>
                                 <option value="Servidores">Servidores</option>
-                                <option value="Cliente">Cliente</option>
+                                <option value="Clientes">Cliente</option>
                                 <option value="Diseño">Diseño</option>
-                                <option value="Despliegue">Despliegue</option>
+                                <option value="Despliegues">Despliegue</option>
                             </select>
                         </c:if>
                         <c:if test="${usuario.nombreUsuario eq 'lola'}">
                             <select name="asigLola" class="form-select" aria-label="Seleccion de Asigantura">
                                 <option value="-1">Selecciona una Opcion</option>
                                 <option value="Servidores">Servidores</option>
-                                <option value="Despliegue">Despliegues</option>
+                                <option value="Despliegues">Despliegues</option>
                             </select>
                         </c:if>
                         <div class="input-group mb-3 mt-3">
@@ -99,8 +101,8 @@
                         <input class="w-100 btn btn-lg colorBtn" type="submit" value="Subir archivo"/>
                     </form>
                     <img src="img/tiposArchivos.png" alt="Tipos de Archivos Posibles">
-                    <c:if test="${not empty param.msgApache}">
-                        <a class="w-100 btn btn-lg colorBtn" href="http://martinrivero.ddns.net:8088/${param.msgApache}">Ver mi Recurso Subido</a>
+                    <c:if test="${not empty param.asig}">
+                        <a class="btn btn-lg colorBtn" href="http://martinrivero.ddns.net:8088/${param.asig}/${param.espacio}">Ver mi Recurso Subido</a>
                     </c:if>
                 </div>
             </c:when>
@@ -132,13 +134,17 @@
                             </fieldset>
                         </form>
                         <c:if test="${not empty param.msgUsuario}">
-                            <p class="text-center text-success">${param.msgUsuario}</p>
+                            <p class="text-center text-success mt-3 fw-bold">Se ha creado correctamente el usuario ${param.msgUsuario}</p>
+                        </c:if>
+                        <c:if test="${not empty param.errorUbd}">
+                            <p class="text-center text-danger fw-bold mt-3 fw-bold">Error al crear el Usuario</p>
                         </c:if>
                     </div>
 
                     <div class="mt-5 p-3 me-0 row row-cols-md-1 flex-md-column align-items-md-center">
                         <h1 class="text-center my-3">Crear Base de datos especifica</h1>
-                        <p class="text-center">Recuerde estar dado de alta en la base de datos para crear una!!!</p>
+                        <p class="text-center text-danger fw-bold">Recuerde estar dado de alta en la base de datos para crear una!!!</p>
+                        <p class="text-center text-danger fw-bold">Recuerde subir los scripts sin comentarios!!!</p>
                         <form class="bd" method="POST" action="crearBD" enctype="multipart/form-data">
                             <fieldset>
                                 <div class="form-floating">
@@ -162,6 +168,12 @@
                                 </div>
 
                             </fieldset>
+                            <c:if test="${not empty param.cBD}">
+                                <p class="text-center text-success mt-3 fw-bold">Se ha creado correctamente la base de datos ${param.cBD} para el usuario ${param.uBD}</p>
+                            </c:if>
+                            <c:if test="${not empty param.errorBD}">
+                                <p class="text-center text-danger mt-3 fw-bold">Error al crear la base de datos</p>
+                            </c:if>
                         </form>
                     </div>
                 </div>
