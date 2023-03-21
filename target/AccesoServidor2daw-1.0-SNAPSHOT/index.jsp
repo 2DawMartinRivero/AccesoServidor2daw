@@ -35,7 +35,7 @@
                     <label for="floatingPassword">Contraseña</label>
                 </div>
 
-                <button class="w-100 btn btn-lg colorBtn" type="submit">Iniciar Sesión</button>
+                <button class="w-100 btn btn-lg colorBtn text-light" type="submit">Iniciar Sesión</button>
 
             </form>
             <c:if test="${usuCorrecto eq 'no'}">

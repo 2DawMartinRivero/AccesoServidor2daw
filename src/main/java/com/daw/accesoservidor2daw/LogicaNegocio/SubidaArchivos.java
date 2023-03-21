@@ -57,23 +57,25 @@ public class SubidaArchivos extends HttpServlet {
 
                 } else {
                     ruta += asignatura + "\\Alumnos";
-                    msg = "apache=apache&asig=" + asignatura + "&espacio=Alumnos";
+                    msg = "envio.jsp?apache=apache&asig=" + asignatura + "&espacio=Alumnos";
                 }
                 break;
 
             case "tomcat":
                 ruta = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps";
                 String archN = request.getPart("archivo").getSubmittedFileName();
-                msg = "tomcat=Apache Tomcat&msgTomcat=" + archN.substring(0, archN.length()-4);
+                //msg = "tomcat=Apache Tomcat&msgTomcat=" + archN.substring(0, archN.length()-4);
                 //Creación usuario y sql
-
+                
+                request.getSession().setAttribute("ruta", archN.substring(0, archN.length()-4));
+                msg="altaProyecto.jsp";
                 break;
         }
 
         Part parte = request.getPart("archivo");
         parte.write(ruta + "\\" + parte.getSubmittedFileName());
         
-        response.sendRedirect("envio.jsp?" + msg);
+        response.sendRedirect(msg);
 
         /* TODO output your page here. You may use following sample code. */
     }

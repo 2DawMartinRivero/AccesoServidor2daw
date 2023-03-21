@@ -58,11 +58,11 @@
                             <input type="file" class="form-control" id="inputGroupFile01" name="archivo">
                         </div>
                         <input type="hidden" name="ruta" value="tomcat"/>
-                        <input class="w-100 btn btn-lg colorBtn" type="submit" value="Subir archivo"/>
+                        <input class="w-100 btn btn-lg colorBtn text-light" type="submit" value="Subir archivo"/>
                     </form>
                     <img class="m-auto" src="img/war.png" id="war" alt="Icono de tipo de archivo">
                     <c:if test="${not empty param.msgTomcat}">
-                        <a class="btn btn-lg colorBtn" href="http://aplicaciones-martinrivero.ddns.net:8081/${param.msgTomcat}">Ver mi Aplicacion Desplegada</a>
+                        <a class="btn btn-lg colorBtn text-light" href="http://aplicaciones-martinrivero.ddns.net:8081/${param.msgTomcat}">Ver mi Aplicacion Desplegada</a>
                     </c:if>
                 </div>
             </c:when>
@@ -98,11 +98,11 @@
                             <input type="file" class="form-control" id="inputGroupFile01" name="archivo">
                         </div>
                         <input type="hidden" name="ruta" value="apache"/>
-                        <input class="w-100 btn btn-lg colorBtn" type="submit" value="Subir archivo"/>
+                        <input class="w-100 btn btn-lg colorBtn text-light" type="submit" value="Subir archivo"/>
                     </form>
                     <img src="img/tiposArchivos.png" alt="Tipos de Archivos Posibles">
                     <c:if test="${not empty param.asig}">
-                        <a class="btn btn-lg colorBtn" href="http://martinrivero.ddns.net:8088/${param.asig}/${param.espacio}">Ver mi Recurso Subido</a>
+                        <a class="btn btn-lg colorBtn text-light" href="http://martinrivero.ddns.net:8088/${param.asig}/${param.espacio}">Ver mi Recurso Subido</a>
                     </c:if>
                 </div>
             </c:when>
@@ -128,7 +128,7 @@
                                     <label for="pass">Contraseña</label>
                                 </div>
                                 <div class="d-grid mt-3">
-                                    <input class="btn btn-primary" type="submit" value="Enviar"/>
+                                    <input class="btn btn-primary text-light" type="submit" value="Enviar"/>
                                 </div>
 
                             </fieldset>
@@ -164,7 +164,7 @@
                                     <input type="file" class="form-control" id="inputGroupFile02" name="sql">
                                 </div>
                                 <div class="d-grid mt-3">
-                                    <input class="btn btn-primary" type="submit" value="Enviar"/>
+                                    <input class="btn btn-primary text-light" type="submit" value="Enviar"/>
                                 </div>
 
                             </fieldset>
