@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -121,7 +122,7 @@ public class crearBD extends HttpServlet {
         try {
             sc = new Scanner(file);
 
-            sc.useDelimiter(";");
+            sc.useDelimiter(Pattern.compile(";"));
             Statement stm = conn.createStatement();
             tabla = sc.next() + ";";
             tabla = tabla.replace("\n", "");

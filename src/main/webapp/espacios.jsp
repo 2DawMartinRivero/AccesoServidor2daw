@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Espacios</title>
         <!-- Favicons -->
+        <link rel="stylesheet" href="css/proyectos.css"/>
         <link rel="icon" href="img/iessinfondo.png">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <style>
@@ -29,14 +30,23 @@
             }
         </style>
     </head>
-    <body class="p-3">
+    <body>
+         <header>
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid text-white">
+                    <a id="logo" class="navbar-brand p-0 b-0 text-white text-center d-flex align-items-center"  href="http://aplicaciones-martinrivero.ddns.net:8081/proyectos.jsp" aria-label="Ir a inicio"> 
+                        <img src="img/project.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top" title="">
+                        <span class="fs-3 ms-3">Proyectos</span>
+                    </a>   
+                </div>
+            </nav>
+        </header>
         <nav class="m-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.jsp">Principal</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Servidores</li> 
             </ol>
         </nav>
-        <form action="envio.jsp" method="POST" class="row row-cols-md-4 justify-content-center">
+        <form action="envio.jsp" method="POST" class="row row-cols-md-4 justify-content-center me-0">
             <div class="card p-3 my-3">
                 <img src="img/logoApache.png" class="card-img-top" alt="...">
                 <div class="card-body">

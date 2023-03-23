@@ -11,6 +11,7 @@
         <!-- Favicons -->
         <link rel="icon" href="img/iessinfondo.png">
         <title>Subir archivos</title>
+        <link rel="stylesheet" href="css/proyectos.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <style>
             .colorBtn{
@@ -40,12 +41,21 @@
         </style>
     </head>
     <body>
+         <header>
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid text-white">
+                    <a id="logo" class="navbar-brand p-0 b-0 text-white text-center d-flex align-items-center"  href="http://aplicaciones-martinrivero.ddns.net:8081/proyectos.jsp" aria-label="Ir a inicio"> 
+                        <img src="img/project.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top" title="">
+                        <span class="fs-3 ms-3">Proyectos</span>
+                    </a>   
+                </div>
+            </nav>
+        </header>
 
         <c:choose>
             <c:when test="${not empty param.tomcat}">
                 <nav class="m-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.jsp">Principal</a></li>
                         <li class="breadcrumb-item"><a href="espacios.jsp">Servidores</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Subida Tomcat</li>
                     </ol>
@@ -69,7 +79,6 @@
             <c:when test="${not empty param.apache}">
                 <nav class="m-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.jsp">Principal</a></li>
                         <li class="breadcrumb-item"><a href="espacios.jsp">Servidores</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Subida archivos Apache</li>
                     </ol>
@@ -109,7 +118,6 @@
             <c:when test="${not empty param.bd}">
                 <nav class="m-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.jsp">Principal</a></li>
                         <li class="breadcrumb-item"><a href="espacios.jsp">Servidores</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Gestion de Base de Datos</li>
                     </ol>

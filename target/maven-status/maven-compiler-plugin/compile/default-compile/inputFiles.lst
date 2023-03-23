@@ -2,8 +2,11 @@ C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\ja
 C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\LogicaNegocio\crearUsuario.java
 C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\LogicaNegocio\ComprobarUsu.java
 C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\DTO\Usuario.java
+C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\DAO\ProyectosJpaController.java
 C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\LogicaNegocio\crearBD.java
 C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\LogicaNegocio\SubidaArchivos.java
 C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\DAO\exceptions\IllegalOrphanException.java
 C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\DAO\exceptions\PreexistingEntityException.java
+C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\DTO\Proyectos.java
+C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\LogicaNegocio\SubirProyecto.java
 C:\Users\Usuario\Documents\Francisco Sedeño Barea\AccesoServidor2daw\src\main\java\com\daw\accesoservidor2daw\DAO\UsuarioJpaController.java

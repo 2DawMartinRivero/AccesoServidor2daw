@@ -1,0 +1,72 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 10 mar. 2023, 8:54:37
+    Author     : Lola
+*/
+
+
+header{
+    text-align: center;
+    padding: 5px;
+    text-shadow: 3px 3px 4px #b0b5b6;
+    margin: 5px auto;
+    /*  width: 80%; 
+    border-bottom: 1px solid #af74b2;
+    */
+
+}
+
+
+header.navbar {
+    background-color: #F09A3E;
+}
+
+.navbar span {
+    vertical-align: -webkit-baseline-middle;
+}
+
+.navbar a {
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+#logo {
+    cursor: pointer;
+}
+
+header{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    min-width: 250px;
+}
+.navbar {
+    background-color: #F09A3E;
+}
+
+.navbar span {
+    vertical-align: -webkit-baseline-middle;
+}
+
+.navbar a {
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+#logo {
+    cursor: pointer;
+}
+
+header nav a, header nav svg {
+    text-shadow: 1px 1px 1px black;
+}
+
+header nav a:hover{
+    transform: scale(1.04);
+}
+
+#spanAdmin {
+    display: none;
+}
+
